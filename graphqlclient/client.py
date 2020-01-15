@@ -1,5 +1,6 @@
 from six.moves import urllib
 import json
+import logging
 
 class GraphQLClient:
     def __init__(self, endpoint):
@@ -29,6 +30,5 @@ class GraphQLClient:
             response = urllib.request.urlopen(req)
             return response.read().decode('utf-8')
         except urllib.error.HTTPError as e:
-            print((e.read()))
-            print('')
+            logging.debug((e.read()))
             raise e
